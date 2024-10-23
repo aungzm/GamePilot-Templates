@@ -6,8 +6,8 @@ services:
     container_name: ark_server
     image: hermsi/ark-server:latest
     volumes:
-      - ${HOME}/ark-server:/app
-      - ${HOME}/ark-server-backups:/home/steam/ARK-Backups
+      - ./ark-server:/app
+      - ./ark-server-backups:/home/steam/ARK-Backups
     env_file:
       - .env
     ports:
