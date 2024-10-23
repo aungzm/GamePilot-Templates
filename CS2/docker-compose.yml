@@ -1,0 +1,14 @@
+services:
+  cs2-server:
+    image: joedwards32/cs2
+    container_name: {container_name}
+    env_file:
+      - .env
+    volumes:
+      - ./cs2:/home/steam/cs2-dedicated/  # Persistent data volume mount point inside container
+    ports:
+      - "27015:27015/tcp"           # TCP
+      - "27015:27015/udp"           # UDP
+      - "27020:27020/udp"           # UDP
+    stdin_open: true # Add local console for docker attach, docker attach --sig-proxy=false cs2-dedicated
+    tty: true # Add local console for docker attach, docker attach --sig-proxy=false cs2-dedicated

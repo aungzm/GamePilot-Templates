@@ -1,0 +1,21 @@
+# https://hub.docker.com/r/mornedhels/enshrouded-server
+
+services:
+  enshrouded:
+    image: mornedhels/enshrouded-server:latest
+    container_name: {container_name}
+    hostname: enshrouded
+    restart: unless-stopped
+    stop_grace_period: 90s
+    ports:
+      - "15637:15637/udp"
+    volumes:
+      - ./data:/opt/enshrouded
+    environment:
+      - SERVER_NAME=Enshrouded Server
+      - SERVER_PASSWORD=secret
+      - UPDATE_CRON=*/30 * * * *
+      - UPDATE_CHECK_PLAYERS=false # Update don't run when players are connected
+      - PUID=4711
+      - PGID=4711
+      - BACKUP_CRON=0 4 * * *
